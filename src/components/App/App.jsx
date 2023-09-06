@@ -5,6 +5,8 @@ import { ContactList } from '../ContactList/ContactList';
 import { ContactFilter } from '../ContactFilter/ContactFilter';
 import { AppTitle, ContactsTitle } from './App.styled';
 
+const LS_KEY = 'contacts';
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -12,7 +14,8 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    console.log('Mounted');
+    const contacts = JSON.parse(localStorage.getItem(LS_KEY));
     if (contacts) {
       this.setState({
         contacts,
@@ -21,8 +24,9 @@ export class App extends Component {
   }
 
   componentDidUpdate(_, prevState) {
+    console.log('Updated');
     if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
     }
   }
 
