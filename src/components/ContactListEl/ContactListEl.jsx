@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Button, Item } from './ContactListEl.styled';
 
 export const ContactListEl = ({ id, name, number, onDelete }) => {
@@ -9,4 +10,11 @@ export const ContactListEl = ({ id, name, number, onDelete }) => {
       </Button>
     </Item>
   );
+};
+
+ContactListEl.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };

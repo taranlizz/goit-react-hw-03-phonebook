@@ -14,7 +14,6 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    console.log('Mounted');
     const contacts = JSON.parse(localStorage.getItem(LS_KEY));
     if (contacts) {
       this.setState({
@@ -24,7 +23,6 @@ export class App extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-    console.log('Updated');
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem(LS_KEY, JSON.stringify(this.state.contacts));
     }
